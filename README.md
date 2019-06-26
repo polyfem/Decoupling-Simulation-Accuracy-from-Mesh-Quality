@@ -19,14 +19,14 @@ This repository contains the scripts to regenerate the figures in the paper:
 
 ### Dependencies
 
-##### Git LFS
+<!-- ##### Git LFS
 
 This repository contains some large files that are tracked via [Git LFS](https://git-lfs.github.com/). After installing Git LFS on your machine, activate it for this repository, and fetch the tacked objects by running:
 
 ```
 git lfs install
 git lfs fetch
-```
+``` -->
 
 ##### PolyFEM
 
