@@ -1,0 +1,8 @@
+{
+	"mesh": "../data/frog.obj",
+	"problem": "Franke",
+	"normalize_mesh": true,
+	"discr_order": 1,
+	"use_p_ref": true,
+	"solver_type": "Hypre",
+}

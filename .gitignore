@@ -1,0 +1,11 @@
+*.html
+*.sif
+
+# Teaser figure
+/fig1-teaser/output
+/fig1-teaser/render
+/fig1-teaser/teaser
+/fig1-teaser/jobs
+
+# Contains python packages installed via conda/pip
+/src/

@@ -1,0 +1,15 @@
+{
+    "mesh": "",
+
+    "use_p_ref": false,
+
+    "n_refs": 0,
+
+    "B": 3,
+    "h1_formula": false,
+
+    "discr_order": 1,
+
+    "normalize_mesh": true,
+    "problem": "Franke"
+}
