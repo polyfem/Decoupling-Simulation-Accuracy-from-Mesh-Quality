@@ -40,39 +40,21 @@ Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) for Python 3
 conda env create -f conda.yml
 ```
 
-##### PyRenderer (via Singularity)
+##### PyRenderer (via Singularity/Docker)
 
 [PyRenderer](https://github.com/qnzhou/PyRenderer) is used to render the images in the paper. PyRenderer is a wrapper around [Mitsuba](https://github.com/mitsuba-renderer/mitsuba), and as such is a bit complicated to setup.
-There is a [Docker image](https://hub.docker.com/r/qnzhou/pyrender) available on Docker-Hub. However, this image is built against the master of the upstream github repository.
-To ensure reproducibility of the renders over time, we instead provide a pre-built [Singularity](https://www.sylabs.io) image (>=v3.0.0) of PyRenderer. Singularity is similar to Docker, but does not require root privilege in order to run images. Please read the [documentation](https://sylabs.io/guides/3.3/user-guide/) to install it on your machine.
+There is a [Docker image](https://hub.docker.com/r/qnzhou/pyrender) available on Docker-Hub.
+We also provide a pre-built Singularity [Singularity](https://www.sylabs.io) image (>=v3.0.0) of PyRenderer. Singularity is similar to Docker, but does not require root privilege in order to run images. Please read the [documentation](https://sylabs.io/guides/3.3/user-guide/) to install it on your machine.
 
-Our Singularity image can be downloaded programmatically from our Google Drive using `gdown`:
-
+- <details><summary>Our Singularity image can be downloaded programmatically from our Google Drive using `gdown` (click to expand).</summary><p>
 ```
 pip3 install --user gdown
 gdown "https://drive.google.com/uc?id=1zfqiThhSRZkmNDeaXj2nGC1kf00kRIsK"
 md5sum pyrenderer.sif
 # 557ce7496b29fd11d0808f5ec918a995
 ```
+</p></details>
 
-We also summarize the steps required to install Singularity (>=v3.0.0) on Ubuntu:
-1. Install build dependencies:
-```
-sudo apt update; sudo apt install -y \
-    build-essential \
-    libgpgme11-dev \
-    libseccomp-dev \
-    libssl-dev \
-    pkg-config \
-    uuid-dev \
-    git \
-    wget
-```
-2. Clone repository
-```
-export VERSION=3.3.0 && # adjust this as necessary \
-    wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-${VERSION}.tar.gz && \
-    tar -xzf singularity-${VERSION}.tar.gz && \
-    cd singularity
-
-```
+- For docker users, make sure to:
+    1. [Install Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) following official instructions.
+    2. [Allow](https://docs.docker.com/install/linux/linux-postinstall/) to run docker as a non-root user.

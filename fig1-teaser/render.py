@@ -180,7 +180,7 @@ def natural_keys(text):
 def write_job(config_str, msh_path, render_dir, bbox, minmax):
     basename = os.path.splitext(msh_path)[0]
     msh_path = os.path.realpath(msh_path)
-    discr_path = os.path.realpath(basename + 'vtu_discr.msh')
+    discr_path = os.path.realpath(basename + '.vtu_discr.msh')
     wire_path = os.path.realpath(basename + '.obj')
     iso_path = os.path.realpath(basename + '_iso.obj')
     basename = os.path.basename(basename)

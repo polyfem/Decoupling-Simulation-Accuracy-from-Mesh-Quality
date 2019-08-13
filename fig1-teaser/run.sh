@@ -3,7 +3,8 @@
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 POLYFEM_BIN=${SCRIPT_PATH}/../polyfem/build/PolyFEM_bin
-SINGULARITY="singularity exec ${SCRIPT_PATH}/../pyrenderer.sif"
+# CONTAINER="singularity exec ${SCRIPT_PATH}/../pyrenderer.sif"
+CONTAINER="docker run -it --rm -v `pwd`:`pwd` qnzhou/pyrender"
 
 # Enable conda
 if [ -f /opt/miniconda3/etc/profile.d/conda.sh ]; then
@@ -15,36 +16,36 @@ fi
 conda activate decoupling-paper
 
 # 1. Prepare job scripts
-python prepare.py
+python3 prepare.py
 
 # 2. Execute job scripts
 pushd jobs
 
-${POLYFEM_BIN} --cmd --json job_0.json
-${POLYFEM_BIN} --cmd --json job_10.json
-${POLYFEM_BIN} --cmd --json job_11.json
-${POLYFEM_BIN} --cmd --json job_12.json
-${POLYFEM_BIN} --cmd --json job_13.json
-${POLYFEM_BIN} --cmd --json job_14.json
-${POLYFEM_BIN} --cmd --json job_15.json
-${POLYFEM_BIN} --cmd --json job_16.json
-${POLYFEM_BIN} --cmd --json job_17.json
-${POLYFEM_BIN} --cmd --json job_18.json
-${POLYFEM_BIN} --cmd --json job_1.json
-${POLYFEM_BIN} --cmd --json job_2.json
-${POLYFEM_BIN} --cmd --json job_3.json
-${POLYFEM_BIN} --cmd --json job_4.json
+# ${POLYFEM_BIN} --cmd --json job_0.json
+# ${POLYFEM_BIN} --cmd --json job_10.json
+# ${POLYFEM_BIN} --cmd --json job_11.json
+# ${POLYFEM_BIN} --cmd --json job_12.json
+# ${POLYFEM_BIN} --cmd --json job_13.json
+# ${POLYFEM_BIN} --cmd --json job_14.json
+# ${POLYFEM_BIN} --cmd --json job_15.json
+# ${POLYFEM_BIN} --cmd --json job_16.json
+# ${POLYFEM_BIN} --cmd --json job_17.json
+# ${POLYFEM_BIN} --cmd --json job_18.json
+# ${POLYFEM_BIN} --cmd --json job_1.json
+# ${POLYFEM_BIN} --cmd --json job_2.json
+# ${POLYFEM_BIN} --cmd --json job_3.json
+# ${POLYFEM_BIN} --cmd --json job_4.json
 ${POLYFEM_BIN} --cmd --json job_5.json
-${POLYFEM_BIN} --cmd --json job_6.json
-${POLYFEM_BIN} --cmd --json job_7.json
-${POLYFEM_BIN} --cmd --json job_8.json
-${POLYFEM_BIN} --cmd --json job_9.json
+# ${POLYFEM_BIN} --cmd --json job_6.json
+# ${POLYFEM_BIN} --cmd --json job_7.json
+# ${POLYFEM_BIN} --cmd --json job_8.json
+# ${POLYFEM_BIN} --cmd --json job_9.json
 
 popd
 
 # 3. Process output files
 VTU_TO_MSH=../scripts/vtu_to_msh.py
-find . -name "*.vtu" -exec ${VTU_TO_MSH} {} -s -d {}_discr.msh \;
+# find . -name "*.vtu" -exec ${VTU_TO_MSH} {} -s -d {}_discr.msh \;
 
 # 4. Create render job files
 python render.py
@@ -62,8 +63,8 @@ to_render=(
 	job_17.json
 	job_18.json
 )
-for f in $to_render; do
-    ${SINGULARITY} bash -c ". /usr/local/mitsuba/setpath.sh; render.py --renderer mitsuba -S $f --front-direction=X --up-direction=Z;"
+for f in "${to_render[@]}"; do
+    ${CONTAINER} bash -c ". /usr/local/mitsuba/setpath.sh; render.py --renderer mitsuba -S `pwd`/$f --front-direction=X --up-direction=Z;"
 done
 popd
 

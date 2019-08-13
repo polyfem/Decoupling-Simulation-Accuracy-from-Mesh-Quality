@@ -60,7 +60,8 @@ def main():
             cells,
             point_data=point_data,
             cell_data=cell_data,
-            field_data=field_data
+            field_data=field_data,
+            file_format='gmsh2-binary'
         )
 
     # Warp points
@@ -74,7 +75,8 @@ def main():
     meshio.write_points_cells(args.output,
                               points,
                               cells,
-                              point_data=point_data)
+                              point_data=point_data,
+                              file_format='gmsh2-binary')
 
 
 if __name__ == "__main__":
