@@ -6,7 +6,11 @@ POLYFEM_BIN=${SCRIPT_PATH}/../polyfem/build/PolyFEM_bin
 SINGULARITY="singularity exec ${SCRIPT_PATH}/../pyrenderer.sif"
 
 # Enable conda
-source /opt/miniconda3/etc/profile.d/conda.sh
+if [ -f /opt/miniconda3/etc/profile.d/conda.sh ]; then
+	source /opt/miniconda3/etc/profile.d/conda.sh
+elif [ -f ${HOME}/miniconda3/etc/profile.d/conda.sh ]; then
+	source ${HOME}/miniconda3/etc/profile.d/conda.sh
+fi
 
 conda activate decoupling-paper
 
@@ -41,10 +45,6 @@ popd
 # 3. Process output files
 VTU_TO_MSH=../scripts/vtu_to_msh.py
 find . -name "*.vtu" -exec ${VTU_TO_MSH} {} -s -d {}_discr.msh \;
-
-pushd output
-rename '.vtu_discr' '_discr' *.msh
-popd
 
 # 4. Create render job files
 python render.py

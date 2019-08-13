@@ -6,8 +6,6 @@ Generates rendering job file + batch script to render them.
 
 find . -name "*.vtu" -exec ~/work/polyfem/python/misc/vtu_to_msh.py \{\} -s -d \{\}_discr.msh \;
 
-rename '.vtu_discr' '_discr' *.msh
-
 for f in *.json;
     pyrenderer --renderer mitsuba -S $f --front-direction=X --up-direction=Z;
 end
@@ -17,7 +15,7 @@ import re
 import os
 import glob
 import numpy
-import pymesh
+import meshio
 
 config = """\
 {{
@@ -182,7 +180,7 @@ def natural_keys(text):
 def write_job(config_str, msh_path, render_dir, bbox, minmax):
     basename = os.path.splitext(msh_path)[0]
     msh_path = os.path.realpath(msh_path)
-    discr_path = os.path.realpath(basename + '_discr.msh')
+    discr_path = os.path.realpath(basename + 'vtu_discr.msh')
     wire_path = os.path.realpath(basename + '.obj')
     iso_path = os.path.realpath(basename + '_iso.obj')
     basename = os.path.basename(basename)
@@ -203,30 +201,10 @@ def write_job(config_str, msh_path, render_dir, bbox, minmax):
 
 def get_bbox(all_msh):
     return [[0.0, 0.0, 0.0], [1.0, 0.9090909957885742, 0.81318598985672]]
-    bbox = [None, None]
-    for msh_path in all_msh:
-        mesh = pymesh.load_mesh(msh_path)
-        for i in range(2):
-            if bbox[i] is None:
-                bbox[i] = mesh.bbox[i]
-        bbox[0] = numpy.minimum(bbox[0], mesh.bbox[0])
-        bbox[1] = numpy.maximum(bbox[1], mesh.bbox[1])
-    return bbox
 
 
 def get_scalar_range(all_msh):
     return [0.0753512978553772, 0.81318598985672]
-    minmax = [None, None]
-    for msh_path in all_msh:
-        mesh = pymesh.load_mesh(msh_path)
-        val = mesh.get_vertex_attribute('solution')
-        a = numpy.min(val)
-        b = numpy.max(val)
-        if (minmax[0] is None) or (minmax[0] > a):
-            minmax[0] = a
-        if (minmax[1] is None) or (minmax[1] < b):
-            minmax[1] = b
-    return minmax
 
 
 def write_sbatch(render_dir, num_jobs):

@@ -3,8 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - pip=19.1.1
+  - numpy=1.17.0
   - pip:
-    - PyMesh2==0.2.1
-    # - meshio==2.3.9
+    - meshio==v3.1.1
     - lxml==4.3.3
-    - "--editable=git+https://github.com/jdumas/meshio.git@9e16f6c8936d10f8505f2aab0d6574d9de4d9018#egg=meshio-master"

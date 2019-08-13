@@ -19,15 +19,6 @@ This repository contains the scripts to regenerate the figures in the paper:
 
 ### Dependencies
 
-<!-- ##### Git LFS
-
-This repository contains some large files that are tracked via [Git LFS](https://git-lfs.github.com/). After installing Git LFS on your machine, activate it for this repository, and fetch the tacked objects by running:
-
-```
-git lfs install
-git lfs fetch
-``` -->
-
 ##### PolyFEM
 
 A specific version of [PolyFEM](https://github.com/polyfem/polyfem) is included as a submodule. To retrieve and compile it, run the following commands:
@@ -41,14 +32,47 @@ cmake ..
 make -j 8
 ```
 
-##### PyRenderer (via Singularity)
-
-[PyRenderer](https://github.com/qnzhou/PyRenderer) is used to render the images in the paper. PyRenderer is a wrapper around [Mitsuba](https://github.com/mitsuba-renderer/mitsuba), and as such is a bit complicated to setup. To ensure reproducibility of the results, a [Singularity](https://www.sylabs.io) image of PyRenderer is provided. Singularity is similar to Docker, but does not require root privilege in order to run images. Please read the [documentation](https://www.sylabs.io/guides/3.2/user-guide/index.html) to install it on your machine.
-
 ##### Conda Environment
 
 Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) for Python 3, and create the environment for this paper from the `conda.yml` file:
 
 ```
-conda create env -f conda.yml
+conda env create -f conda.yml
+```
+
+##### PyRenderer (via Singularity)
+
+[PyRenderer](https://github.com/qnzhou/PyRenderer) is used to render the images in the paper. PyRenderer is a wrapper around [Mitsuba](https://github.com/mitsuba-renderer/mitsuba), and as such is a bit complicated to setup.
+There is a [Docker image](https://hub.docker.com/r/qnzhou/pyrender) available on Docker-Hub. However, this image is built against the master of the upstream github repository.
+To ensure reproducibility of the renders over time, we instead provide a pre-built [Singularity](https://www.sylabs.io) image (>=v3.0.0) of PyRenderer. Singularity is similar to Docker, but does not require root privilege in order to run images. Please read the [documentation](https://sylabs.io/guides/3.3/user-guide/) to install it on your machine.
+
+Our Singularity image can be downloaded programmatically from our Google Drive using `gdown`:
+
+```
+pip3 install --user gdown
+gdown "https://drive.google.com/uc?id=1zfqiThhSRZkmNDeaXj2nGC1kf00kRIsK"
+md5sum pyrenderer.sif
+# 557ce7496b29fd11d0808f5ec918a995
+```
+
+We also summarize the steps required to install Singularity (>=v3.0.0) on Ubuntu:
+1. Install build dependencies:
+```
+sudo apt update; sudo apt install -y \
+    build-essential \
+    libgpgme11-dev \
+    libseccomp-dev \
+    libssl-dev \
+    pkg-config \
+    uuid-dev \
+    git \
+    wget
+```
+2. Clone repository
+```
+export VERSION=3.3.0 && # adjust this as necessary \
+    wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-${VERSION}.tar.gz && \
+    tar -xzf singularity-${VERSION}.tar.gz && \
+    cd singularity
+
 ```
