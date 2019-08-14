@@ -22,15 +22,6 @@ python3 prepare.py
 pushd jobs
 
 ${POLYFEM_BIN} --cmd --json job_0.json
-${POLYFEM_BIN} --cmd --json job_10.json
-${POLYFEM_BIN} --cmd --json job_11.json
-${POLYFEM_BIN} --cmd --json job_12.json
-${POLYFEM_BIN} --cmd --json job_13.json
-${POLYFEM_BIN} --cmd --json job_14.json
-${POLYFEM_BIN} --cmd --json job_15.json
-${POLYFEM_BIN} --cmd --json job_16.json
-${POLYFEM_BIN} --cmd --json job_17.json
-${POLYFEM_BIN} --cmd --json job_18.json
 ${POLYFEM_BIN} --cmd --json job_1.json
 ${POLYFEM_BIN} --cmd --json job_2.json
 ${POLYFEM_BIN} --cmd --json job_3.json
@@ -45,39 +36,31 @@ popd
 
 # 3. Process output files
 VTU_TO_MSH=../scripts/vtu_to_msh.py
-# find . -name "*.vtu" -exec ${VTU_TO_MSH} {} -s -d {}_discr.msh \;
+find . -name "*.vtu" -exec ${VTU_TO_MSH} {} \;
 
 # 4. Create render job files
 python render.py
 
-# 5. Render selected files
+# # 5. Render selected files
 pushd render
 to_render=(
+	job_0.json
+	job_1.json
+	job_2.json
+	job_3.json
 	job_4.json
 	job_5.json
+	job_6.json
+	job_7.json
 	job_8.json
 	job_9.json
-	job_12.json
-	job_13.json
-	job_16.json
-	job_17.json
-	job_18.json
 )
 for f in "${to_render[@]}"; do
-    ${CONTAINER} bash -c ". /usr/local/mitsuba/setpath.sh; render.py --renderer mitsuba -S `pwd`/$f --front-direction=X --up-direction=Z;"
+    ${CONTAINER} bash -c ". /usr/local/mitsuba/setpath.sh; pushd `pwd`; render.py --renderer mitsuba -S $f --front-direction=Z --up-direction=Y --head-on;"
 done
 popd
 
-# 6. Rename files which are in the teaser
-mkdir -p teaser
-pushd render
-cp job_4.png  ../teaser/bridge_2p.png
-cp job_5.png  ../teaser/bridge_2.png
-cp job_8.png  ../teaser/bridge_4p.png
-cp job_9.png  ../teaser/bridge_4.png
-cp job_12.png ../teaser/bridge_6p.png
-cp job_13.png ../teaser/bridge_6.png
-cp job_16.png ../teaser/bridge_8p.png
-cp job_17.png ../teaser/bridge_8.png
-cp job_18.png ../teaser/bridge_ref.png
-popd
+# 6. Rename files
+# mkdir -p teaser
+# pushd render
+# popd

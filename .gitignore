@@ -1,11 +1,16 @@
 *.html
 *.sif
 
-# Teaser figure
+# Fig1 - Teaser
 /fig1-teaser/output
 /fig1-teaser/render
 /fig1-teaser/teaser
 /fig1-teaser/jobs
+
+# Fig7 - Neo-Hookean-2d
+/fig7-neo-hookean-2d/output
+/fig7-neo-hookean-2d/render
+/fig7-neo-hookean-2d/jobs
 
 # Contains python packages installed via conda/pip
 /src/
