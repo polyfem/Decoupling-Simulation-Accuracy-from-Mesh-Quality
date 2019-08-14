@@ -27,10 +27,10 @@ ${POLYFEM_BIN} --cmd --json job_2.json
 ${POLYFEM_BIN} --cmd --json job_3.json
 ${POLYFEM_BIN} --cmd --json job_4.json
 ${POLYFEM_BIN} --cmd --json job_5.json
-${POLYFEM_BIN} --cmd --json job_6.json
-${POLYFEM_BIN} --cmd --json job_7.json
-${POLYFEM_BIN} --cmd --json job_8.json
-${POLYFEM_BIN} --cmd --json job_9.json
+# ${POLYFEM_BIN} --cmd --json job_6.json
+# ${POLYFEM_BIN} --cmd --json job_7.json
+# ${POLYFEM_BIN} --cmd --json job_8.json
+# ${POLYFEM_BIN} --cmd --json job_9.json
 
 popd
 
@@ -50,10 +50,10 @@ to_render=(
 	job_3.json
 	job_4.json
 	job_5.json
-	job_6.json
-	job_7.json
-	job_8.json
-	job_9.json
+	# job_6.json
+	# job_7.json
+	# job_8.json
+	# job_9.json
 )
 for f in "${to_render[@]}"; do
     ${CONTAINER} bash -c ". /usr/local/mitsuba/setpath.sh; pushd `pwd`; render.py --renderer mitsuba -S $f --front-direction=Z --up-direction=Y --head-on;"
