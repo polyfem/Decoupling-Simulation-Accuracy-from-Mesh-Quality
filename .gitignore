@@ -12,6 +12,14 @@
 /fig7-neo-hookean-2d/render
 /fig7-neo-hookean-2d/jobs
 /fig7-neo-hookean-2d/fig
+/fig7-neo-hookean-2d/log
+
+# Fig8 - Neo-Hookean-3d
+/fig8-neo-hookean-3d/output
+/fig8-neo-hookean-3d/render
+/fig8-neo-hookean-3d/jobs
+/fig8-neo-hookean-3d/fig
+/fig8-neo-hookean-3d/log
 
 # Contains python packages installed via conda/pip
 /src/

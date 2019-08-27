@@ -21,16 +21,16 @@ python3 prepare.py
 # 2. Execute job scripts
 pushd jobs
 
-${POLYFEM_BIN} --cmd --json job_0.json
-${POLYFEM_BIN} --cmd --json job_1.json
-${POLYFEM_BIN} --cmd --json job_2.json
-${POLYFEM_BIN} --cmd --json job_3.json
-${POLYFEM_BIN} --cmd --json job_4.json
-${POLYFEM_BIN} --cmd --json job_5.json
-${POLYFEM_BIN} --cmd --json job_6.json
-# ${POLYFEM_BIN} --cmd --json job_7.json
-${POLYFEM_BIN} --cmd --json job_8.json
-# ${POLYFEM_BIN} --cmd --json job_9.json
+${POLYFEM_BIN} --cmd --json job_0.json | tee ../log/job_0.log
+${POLYFEM_BIN} --cmd --json job_1.json | tee ../log/job_1.log
+${POLYFEM_BIN} --cmd --json job_2.json | tee ../log/job_2.log
+${POLYFEM_BIN} --cmd --json job_3.json | tee ../log/job_3.log
+${POLYFEM_BIN} --cmd --json job_4.json | tee ../log/job_4.log
+${POLYFEM_BIN} --cmd --json job_5.json | tee ../log/job_5.log
+${POLYFEM_BIN} --cmd --json job_6.json | tee ../log/job_6.log
+# ${POLYFEM_BIN} --cmd --json job_7.json | tee ../log/job_7.log
+${POLYFEM_BIN} --cmd --json job_8.json | tee ../log/job_8.log
+# ${POLYFEM_BIN} --cmd --json job_9.json | tee ../log/job_9.log
 
 popd
 
