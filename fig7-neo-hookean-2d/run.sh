@@ -27,9 +27,9 @@ ${POLYFEM_BIN} --cmd --json job_2.json
 ${POLYFEM_BIN} --cmd --json job_3.json
 ${POLYFEM_BIN} --cmd --json job_4.json
 ${POLYFEM_BIN} --cmd --json job_5.json
-# ${POLYFEM_BIN} --cmd --json job_6.json
+${POLYFEM_BIN} --cmd --json job_6.json
 # ${POLYFEM_BIN} --cmd --json job_7.json
-# ${POLYFEM_BIN} --cmd --json job_8.json
+${POLYFEM_BIN} --cmd --json job_8.json
 # ${POLYFEM_BIN} --cmd --json job_9.json
 
 popd
@@ -50,9 +50,9 @@ to_render=(
 	job_3.json
 	job_4.json
 	job_5.json
-	# job_6.json
+	job_6.json
 	# job_7.json
-	# job_8.json
+	job_8.json
 	# job_9.json
 )
 for f in "${to_render[@]}"; do
@@ -61,6 +61,16 @@ done
 popd
 
 # 6. Rename files
-# mkdir -p teaser
-# pushd render
-# popd
+mkdir -p fig
+pushd render
+# cp job_0.png ../fig/ours_0.png # Not used in the paper
+cp job_2.png ../fig/ours_1.png
+cp job_4.png ../fig/ours_2.png
+cp job_6.png ../fig/ours_3.png
+cp job_8.png ../fig/ours_4.png
+# cp job_1.png ../fig/p1_0.png # Not used in the paper
+cp job_3.png ../fig/p1_1.png
+cp job_5.png ../fig/p1_2.png
+# cp job_7.png ../fig/p1_3.png
+# cp job_9.png ../fig/p1_4.png
+popd

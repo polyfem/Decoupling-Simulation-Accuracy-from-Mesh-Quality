@@ -11,6 +11,7 @@
 /fig7-neo-hookean-2d/output
 /fig7-neo-hookean-2d/render
 /fig7-neo-hookean-2d/jobs
+/fig7-neo-hookean-2d/fig
 
 # Contains python packages installed via conda/pip
 /src/

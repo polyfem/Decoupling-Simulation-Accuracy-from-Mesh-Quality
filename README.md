@@ -32,6 +32,8 @@ cmake ..
 make -j 8
 ```
 
+Make sure that [PARDISO](https://www.pardiso-project.org/) is found and enabled, otherwise you might not be able to generate certain figures (see below). In PolyFEM, `FindPardiso.cmake` will look for the PARDISO library in `~/.local` or `~/.pardiso`. If you installed PARDISO in a different location, you may need to update this file accordingly.
+
 ##### Conda Environment
 
 Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) for Python 3, and create the environment for this paper from the `conda.yml` file:
@@ -58,3 +60,22 @@ md5sum pyrenderer.sif
 - For docker users, make sure to:
     1. [Install Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) following official instructions.
     2. [Allow](https://docs.docker.com/install/linux/linux-postinstall/) to run docker as a non-root user.
+
+### Solver
+
+As stated in the paper, we use [PARDISO](https://www.pardiso-project.org/) for the following figures:
+- Figure 7
+- Figure 8
+- Figure 11
+- Figure 21
+- Table 1
+
+And [HYPRE](https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods) for the following figures:
+- Figure 9
+- Figure 10
+- Figure 16
+- Figure 17
+- Figure 20
+
+
+If you try to generate the first figures with an iterative solver, running times may be exceedingly long, so it is not recommended.
