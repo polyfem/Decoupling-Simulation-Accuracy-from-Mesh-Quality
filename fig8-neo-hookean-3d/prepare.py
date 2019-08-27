@@ -69,6 +69,7 @@ config_ref = {
         "mu": 0.3846153846153846
     },
 
+    # "solver_type": "Eigen::CholmodSupernodalLLT",
     "problem_params": {
         "dirichlet_boundary": [{
             "id": 5,

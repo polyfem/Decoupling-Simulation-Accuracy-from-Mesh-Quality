@@ -15,7 +15,7 @@ import re
 import os
 import glob
 import numpy
-import pymesh
+import meshio
 
 
 config = """\
@@ -193,20 +193,24 @@ def write_job(config_str, msh_path, render_dir, bbox, minmax):
 def get_bbox(all_msh):
     bbox = [None, None]
     for msh_path in all_msh:
-        mesh = pymesh.load_mesh(msh_path)
+        mesh = meshio.read(msh_path)
+        mesh_bbox = [
+            numpy.amin(mesh.points, axis=0),
+            numpy.amax(mesh.points, axis=0)
+        ]
         for i in range(2):
             if bbox[i] is None:
-                bbox[i] = mesh.bbox[i]
-        bbox[0] = numpy.minimum(bbox[0], mesh.bbox[0])
-        bbox[1] = numpy.maximum(bbox[1], mesh.bbox[1])
+                bbox[i] = mesh_bbox[i]
+        bbox[0] = numpy.minimum(bbox[0], mesh_bbox[0])
+        bbox[1] = numpy.maximum(bbox[1], mesh_bbox[1])
     return bbox
 
 
 def get_scalar_range(all_msh):
     minmax = [None, None]
     for msh_path in all_msh:
-        mesh = pymesh.load_mesh(msh_path)
-        val = mesh.get_vertex_attribute('scalar_value')
+        mesh = meshio.read(msh_path)
+        val = mesh.point_data['scalar_value']
         a = numpy.min(val)
         b = numpy.max(val)
         if (minmax[0] is None) or (minmax[0] > a):
