@@ -17,6 +17,13 @@ This repository contains the scripts to regenerate the figures in the paper:
 }
 ```
 
+### Python teaser
+
+We created a simple [jupyter notebook](https://raw.githubusercontent.com/polyfem/Decoupling-Simulation-Accuracy-from-Mesh-Quality/master/Decoupling-Simulation-Accuracy-from-Mesh-Quality.ipynb) with an example to run the teaser image.
+
+This notebook can be interactively run with binder!
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/polyfem/Decoupling-Simulation-Accuracy-from-Mesh-Quality.git/master?filepath=Decoupling-Simulation-Accuracy-from-Mesh-Quality.ipynb)
+
 ### Dependencies
 
 ##### PolyFEM
