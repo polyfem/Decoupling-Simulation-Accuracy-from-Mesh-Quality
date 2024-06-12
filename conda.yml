@@ -1,9 +1,0 @@
-name: decoupling-paper
-channels:
-  - conda-forge
-dependencies:
-  - pip=19.1.1
-  - numpy=1.17.0
-  - pip:
-    - meshio==v3.1.1
-    - lxml==4.3.3

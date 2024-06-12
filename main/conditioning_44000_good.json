@@ -1,0 +1,29 @@
+{
+    "common": "../common.json",
+    "geometry": {
+        "advanced": {
+            "normalize_mesh": true
+        },
+        "mesh": "conditioning_44000_good.msh",
+        "surface_selection": 1
+    },
+    "space": {
+        "use_p_ref": true
+    },
+    "materials": {
+        "type": "Laplacian"
+    },
+    "preset_problem": {
+        "type": "Franke"
+    },
+    "tests": {
+        "err_h1": 0.4558593801787017,
+        "err_h1_semi": 0.4061414489983321,
+        "err_l2": 0.20701907618005955,
+        "err_linf": 0.3797229034220728,
+        "err_linf_grad": 0.3797229034220728,
+        "err_lp": 0.2877752493790054,
+        "margin": 1e-05,
+        "time_steps": "static"
+    }
+}

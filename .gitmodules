@@ -1,3 +1,0 @@
-[submodule "polyfem"]
-	path = polyfem
-	url = https://github.com/polyfem/polyfem.git

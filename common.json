@@ -1,0 +1,16 @@
+{
+    "solver": {
+        "linear": {
+            "solver": "Eigen::SimplicialLDLT"
+        }
+    },
+    "output": {
+        "json": "sim.json",
+        "paraview": {
+            "file_name": "sim.vtu",
+            "options": {
+                "discretization_order": true
+            }
+        }
+    }
+}
