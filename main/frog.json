@@ -7,22 +7,22 @@
         "mesh": "frog.obj",
         "surface_selection": 1
     },
-    "space": {
-        "use_p_ref": true
-    },
     "materials": {
         "type": "Laplacian"
     },
     "preset_problem": {
         "type": "Franke"
     },
+    "space": {
+        "use_p_ref": true
+    },
     "tests": {
-        "err_h1": 0.4558593801787017,
-        "err_h1_semi": 0.4061414489983321,
-        "err_l2": 0.20701907618005955,
-        "err_linf": 0.3797229034220728,
-        "err_linf_grad": 0.3797229034220728,
-        "err_lp": 0.2877752493790054,
+        "err_h1": 1.095094756180249,
+        "err_h1_semi": 1.0381793950150513,
+        "err_l2": 0.3484480862046181,
+        "err_linf": 1.2195170973138332,
+        "err_linf_grad": 2.4854009867956273,
+        "err_lp": 0.7553350746811552,
         "margin": 1e-05,
         "time_steps": "static"
     }

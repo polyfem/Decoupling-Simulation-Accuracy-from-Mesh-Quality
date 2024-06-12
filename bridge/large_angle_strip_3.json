@@ -7,22 +7,22 @@
         "mesh": "large_angle_strip_3.obj",
         "surface_selection": 1
     },
-    "space": {
-        "use_p_ref": true
-    },
     "materials": {
         "type": "Laplacian"
     },
     "preset_problem": {
         "type": "Cubic"
     },
+    "space": {
+        "use_p_ref": true
+    },
     "tests": {
-        "err_h1": 0.4558593801787017,
-        "err_h1_semi": 0.4061414489983321,
-        "err_l2": 0.20701907618005955,
-        "err_linf": 0.3797229034220728,
-        "err_linf_grad": 0.3797229034220728,
-        "err_lp": 0.2877752493790054,
+        "err_h1": 0.2342098741075545,
+        "err_h1_semi": 0.2340326835221351,
+        "err_l2": 0.0091086866728783,
+        "err_linf": 0.026430658997281364,
+        "err_linf_grad": 0.5011370419062345,
+        "err_lp": 0.018232285249566823,
         "margin": 1e-05,
         "time_steps": "static"
     }

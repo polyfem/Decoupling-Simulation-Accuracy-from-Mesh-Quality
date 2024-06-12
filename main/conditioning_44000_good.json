@@ -7,22 +7,22 @@
         "mesh": "conditioning_44000_good.msh",
         "surface_selection": 1
     },
-    "space": {
-        "use_p_ref": true
-    },
     "materials": {
         "type": "Laplacian"
     },
     "preset_problem": {
         "type": "Franke"
     },
+    "space": {
+        "use_p_ref": true
+    },
     "tests": {
-        "err_h1": 0.4558593801787017,
-        "err_h1_semi": 0.4061414489983321,
-        "err_l2": 0.20701907618005955,
-        "err_linf": 0.3797229034220728,
-        "err_linf_grad": 0.3797229034220728,
-        "err_lp": 0.2877752493790054,
+        "err_h1": 0.43642525689663925,
+        "err_h1_semi": 0.4200845425856296,
+        "err_l2": 0.11830461503221218,
+        "err_linf": 1.0661376027353593,
+        "err_linf_grad": 2.322236826206002,
+        "err_lp": 0.47378407647641807,
         "margin": 1e-05,
         "time_steps": "static"
     }

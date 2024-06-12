@@ -1,54 +1,5 @@
 {
-    "common": "../common.json",
-    "geometry": {
-        "advanced": {
-            "normalize_mesh": true
-        },
-        "mesh": "large_angle_strip_7.obj",
-        "surface_selection": [
-            {
-                "id": 1,
-                "box": [
-                    [
-                        0,
-                        0
-                    ],
-                    [
-                        1,
-                        0.001
-                    ]
-                ],
-                "relative": true
-            },
-            {
-                "id": 3,
-                "box": [
-                    [
-                        0,
-                        0.999
-                    ],
-                    [
-                        1,
-                        1
-                    ]
-                ],
-                "relative": true
-            }
-        ]
-    },
-    "space": {
-        "use_p_ref": false
-    },
-    "materials": {
-        "type": "NeoHookean",
-        "lambda": 0.32967032967032966,
-        "mu": 0.3846153846153846
-    },
     "boundary_conditions": {
-        "rhs": [
-            0,
-            0
-        ],
         "dirichlet_boundary": [
             {
                 "id": 1,
@@ -66,15 +17,64 @@
                     0
                 ]
             }
+        ],
+        "rhs": [
+            0,
+            0
         ]
     },
+    "common": "../common.json",
+    "geometry": {
+        "advanced": {
+            "normalize_mesh": true
+        },
+        "mesh": "large_angle_strip_7.obj",
+        "surface_selection": [
+            {
+                "box": [
+                    [
+                        0,
+                        0
+                    ],
+                    [
+                        1,
+                        0.001
+                    ]
+                ],
+                "id": 1,
+                "relative": true
+            },
+            {
+                "box": [
+                    [
+                        0,
+                        0.999
+                    ],
+                    [
+                        1,
+                        1
+                    ]
+                ],
+                "id": 3,
+                "relative": true
+            }
+        ]
+    },
+    "materials": {
+        "lambda": 0.32967032967032966,
+        "mu": 0.3846153846153846,
+        "type": "NeoHookean"
+    },
+    "space": {
+        "use_p_ref": false
+    },
     "tests": {
-        "err_h1": 0.4558593801787017,
-        "err_h1_semi": 0.4061414489983321,
-        "err_l2": 0.20701907618005955,
-        "err_linf": 0.3797229034220728,
-        "err_linf_grad": 0.3797229034220728,
-        "err_lp": 0.2877752493790054,
+        "err_h1": 0.8967833584641723,
+        "err_h1_semi": 0.827274519364973,
+        "err_l2": 0.34617518921455526,
+        "err_linf": 0.9517243357949193,
+        "err_linf_grad": 1.4958217250385772,
+        "err_lp": 0.6320132051938484,
         "margin": 1e-05,
         "time_steps": "static"
     }
